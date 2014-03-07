@@ -1,0 +1,143 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 2, 2014, 11:38:36 PM
+    Author     : Iram
+*/
+
+.main{
+    background-color: #F8F8F8;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    color:white;
+}
+
+.centre{
+    background-color: white;
+    height: 620px;
+    margin:0px 150px;
+}
+
+.header{
+    background-image: url('../images/header.jpg');
+    background-repeat:no-repeat;
+    background-size: 100%;
+    padding:60px;
+    color:white;
+    font-size: 60px;
+}
+.navigation{    
+    background-color:#3F3F3F;
+}
+
+.navigationList
+{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;;
+}
+.navList
+{
+    float:left;
+}
+a.navLinks:link,a.navLinks:visited
+{
+    display:block;
+    width:120px;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#3F3F3F;
+    text-align:center;
+    padding:4px 70px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+a.navLinks:hover,a.navLinks:active
+{
+    background-color:#1C1C1C;
+}
+
+.left{
+    margin-top:20px;
+    margin-left:10px;
+    float:left;
+    margin-right: 50px;
+    padding-bottom: 100px;
+}
+
+.sideMenu
+{
+    list-style-type:none;
+    margin:20px 0px;
+    padding:0;
+    overflow:hidden;
+}
+
+ul{
+    list-style-type:none;
+}
+
+a.sideLinks:link, a.sideLinks:visited
+{ 
+    display:block;
+    width:180px;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#3F3F3F;
+    padding:5px 25px;
+    text-decoration:none;
+    border-bottom:1px solid white;   
+}
+a.sideLinks:hover,a.sideLinks:active
+{
+    background-color:#1C1C1C;
+    border: 0px;
+}
+
+.right{
+    padding-top: 30px;
+    padding-bottom:330px;
+    color:black;
+    background-color: white;
+}
+
+.footer{
+    background-image:url('../images/footer.jpg');
+    padding:10px;
+    padding-left:20px; 
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.login{
+    text-decoration: none;
+    padding:16px;
+    color: #3F3F3F;
+    font-family: sans-serif;
+    font-size: 22px;
+}
+
+.error
+{
+    color:red;
+}
+
+.logout{
+    text-align: right;
+    float:right;
+    margin-right: 30px;
+}
+
+label {
+    display: block;
+    width: 8em;
+    text-align: left;
+    color:black;
+    float: left;
+}
+
