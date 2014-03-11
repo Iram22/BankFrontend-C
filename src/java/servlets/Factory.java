@@ -3,13 +3,17 @@ package servlets;
 import commands.AccountDetailCommand;
 import dk.cphbusiness.bank.contract.BankManager;
 import commands.Command;
-import commands.ListAccountsCommand;
+import commands.CreateAccountCommand;
+import commands.CustomerDetailCommand;
+import commands.ListCustomerAccountsCommand;
 import commands.ListCustomersCommand;
 import commands.LoginCommand;
 import commands.LogoutCommand;
 import commands.ShowLoginCommand;
 import commands.TargetCommand;
 import commands.TransferCommand;
+import commands.CreateCustomerCommand;
+import commands.ListAccountCommand;
 import dk.cphbusiness.dummy.bank.control.DummyBankManager;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,8 +31,9 @@ public class Factory {
     private Factory() {
         manager = new DummyBankManager();
         Map<SecurityRole, String> roles = new HashMap();
+        
+        roles.put(SecurityRole.AccountManager, "/all/main.jsp");
         roles.put(SecurityRole.Customer, "/customer/account-list.jsp");
-        roles.put(SecurityRole.AccountManager, "/accountManager/customer-list.jsp");
 
         commands.put("login", new LoginCommand(roles, "/login/login.jsp"));
         commands.put("logout", new LogoutCommand("/all/main.jsp", Arrays.asList(SecurityRole.All)));
@@ -36,10 +41,16 @@ public class Factory {
         commands.put("main", new TargetCommand("/all/main.jsp", Arrays.asList(SecurityRole.All)));
         commands.put("showlogin", new ShowLoginCommand("/login/login.jsp", Arrays.asList(SecurityRole.All)));
         commands.put("customerList", new ListCustomersCommand("/accountManager/customer-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
-        commands.put("accountList", new ListAccountsCommand("/customer/account-list.jsp", Arrays.asList(SecurityRole.Customer)));
+        commands.put("accountList", new ListAccountCommand("/accountManager/account-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("customerAccountList", new ListCustomerAccountsCommand("/customer/account-list.jsp", Arrays.asList(SecurityRole.Customer)));
         commands.put("accountDetail", new AccountDetailCommand("/customer/account-detail.jsp", Arrays.asList(SecurityRole.Customer)));
-        commands.put("showTransfer", new ListAccountsCommand("/customer/transfer-edit.jsp", Arrays.asList(SecurityRole.Customer)));
+        commands.put("showTransfer", new ListCustomerAccountsCommand("/customer/transfer-edit.jsp", Arrays.asList(SecurityRole.Customer)));
         commands.put("transfer", new TransferCommand("/customer/account-detail.jsp", Arrays.asList(SecurityRole.Customer)));
+        commands.put("showCreateCustomer", new TargetCommand("/accountManager/customer-edit.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("showCreateAccount", new TargetCommand("/accountManager/account-edit.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("createCustomer", new CreateCustomerCommand("/accountManager/customer-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("customerDetail", new CustomerDetailCommand("/accountManager/customer-detail.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("createAccount", new CreateAccountCommand("/accountManager/account-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
     }
 
     public static Factory getInstance() {

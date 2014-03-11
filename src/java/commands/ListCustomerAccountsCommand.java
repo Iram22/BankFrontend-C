@@ -9,9 +9,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import security.SecurityRole;
 
-public class ListAccountsCommand extends TargetCommand {
+public class ListCustomerAccountsCommand extends TargetCommand {
 
-  public ListAccountsCommand(String target,List<SecurityRole> roles) {
+  public ListCustomerAccountsCommand(String target,List<SecurityRole> roles) {
     super(target,roles);
   }
 

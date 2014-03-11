@@ -39,7 +39,7 @@ public class LoginCommand implements Command {
       }
       if(request.isUserInRole("Customer"))
       {
-          new ListAccountsCommand("/customer/account-list.jsp", Arrays.asList(SecurityRole.Customer)).execute(request);
+          new ListCustomerAccountsCommand("/customer/account-list.jsp", Arrays.asList(SecurityRole.Customer)).execute(request);
       }
     } 
     catch (ServletException ex) {

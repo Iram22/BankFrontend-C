@@ -1,19 +1,20 @@
 <%-- 
-    Document   : customer-list
-    Created on : Feb 26, 2014, 11:59:14 AM
+    Document   : account-edit
+    Created on : Mar 10, 2014, 1:36:31 PM
     Author     : Iram
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer List</title>
+        
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/accountstyle.css">
+        <title>JSP Page</title>
     </head>
-     <body class="main">
+    <body class="main">
         <div class="centre">
             <div class="header"> 
                 State Bank
@@ -46,28 +47,26 @@
                 </div>
                 <div class="right">
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <h1>Customer List</h1>
-                    <table border="1">
-                        <tr><th>Cpr</th><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr>
-                                <c:forEach var="customer" items="${customers}">
-                            <tr><td><a href="Controller?command=customerDetail&cpr=${customer.cpr}">${customer.cpr}</a></td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.phone}</td><td>${customer.email}</td></tr>
-                        </c:forEach>                           
-                    </table>
-                    <form>                        
-                            <input type="submit" name="createCustomer" value="Create customer">
-                            <input type="hidden" name="command" value="showCreateCustomer"> 
+
+                    <h1>Create account</h1>
+
+                    <form action="Controller?command=createAccount">
+                        <label>Cpr</label><input type="text" name="cpr"><br/>
+                        <label>Interest</label><input type="text" name="interest"><br/>
+                        <input type="submit" name="createAccount" value="Create account">
+                        <input type="hidden" name="command" value="createAccount">
+
                     </form>
 
-            
                     <br/>
-                    <a href="Controller?command=back">Back to main page</a>
+                    <a href="Controller?command=accountList">Cancel</a><br/>
+                    <a href="Controller?command=back">Back to main page</a><br/>
+                    <p class="error">${createAccountError}</p>
                 </div>
             </div>
             <div class="footer">
                 Copyright © 2014 Group-C
             </div>
-        </div>
-
-
+        </div>       
     </body>
 </html>

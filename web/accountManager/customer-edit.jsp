@@ -1,19 +1,20 @@
 <%-- 
-    Document   : customer-list
-    Created on : Feb 26, 2014, 11:59:14 AM
+    Document   : customer-edit
+    Created on : Mar 9, 2014, 6:12:52 PM
     Author     : Iram
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer List</title>
+        <title>Customer Edit</title>
+
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
     </head>
-     <body class="main">
+    <body class="main">
+
         <div class="centre">
             <div class="header"> 
                 State Bank
@@ -46,21 +47,26 @@
                 </div>
                 <div class="right">
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <h1>Customer List</h1>
-                    <table border="1">
-                        <tr><th>Cpr</th><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr>
-                                <c:forEach var="customer" items="${customers}">
-                            <tr><td><a href="Controller?command=customerDetail&cpr=${customer.cpr}">${customer.cpr}</a></td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.phone}</td><td>${customer.email}</td></tr>
-                        </c:forEach>                           
-                    </table>
-                    <form>                        
-                            <input type="submit" name="createCustomer" value="Create customer">
-                            <input type="hidden" name="command" value="showCreateCustomer"> 
-                    </form>
+                    <form action="Controller?command=createCustomer" method="post">
+                        <h1>Create customer</h1>
+                        <label>Cpr: </label><input type="text" name="cpr"><br/>
+                        <label>Title: </label><select name="title">
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>                
+                        </select><br/>
+                        <label>First name: </label><input type="text" name="firstName"><br/>
+                        <label>Last name: </label><input type="text" name="lastName"><br/>
+                        <label>Street: </label><input type="text" name="street"><br/>
+                        <label>Postal code: </label><input type="text" name="postalCode"><br/>
+                        <label>Postal district: </label><input type="text" name="postalDistrict"><br/>
+                        <label>Phone: </label><input type="text" name="phone"><br/>
+                        <label>Email: </label><input type="text" name="email"><br/>
+                        <input type="submit" name="create" value="Save">
 
-            
-                    <br/>
-                    <a href="Controller?command=back">Back to main page</a>
+                    </form>
+                    <br/><a href="Controller?command=customerList">Cancel</a>
+                    <br/><a href="Controller?command=back">Back to main page</a>
                 </div>
             </div>
             <div class="footer">

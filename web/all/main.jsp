@@ -40,10 +40,13 @@
                 <div class="right">
                     <ul>
                         <c:if test="${pageContext.request.isUserInRole('Customer')==true}">
-                            <li><a href="Controller?command=accountList">View accounts</a></li>
+                            <li><a href="Controller?command=customerAccountList">View accounts</a></li>
                             </c:if >
                             <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
-                            <li><a href="Controller?command=customerList">View customers</a></li>
+                            <li><a href="Controller?command=customerList">Manage customers</a></li>
+                            </c:if >
+                        <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
+                            <li><a href="Controller?command=accountList">Manage accounts</a></li>
                             </c:if >
 
                         <c:choose >

@@ -1,19 +1,22 @@
 <%-- 
-    Document   : customer-list
-    Created on : Feb 26, 2014, 11:59:14 AM
+    Document   : account-list
+    Created on : Mar 10, 2014, 8:41:35 PM
     Author     : Iram
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer List</title>
+        
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/accountstyle.css">
+        <title>JSP Page</title>
     </head>
-     <body class="main">
+    <body class="main">
         <div class="centre">
             <div class="header"> 
                 State Bank
@@ -46,19 +49,21 @@
                 </div>
                 <div class="right">
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <h1>Customer List</h1>
+                    <h1>Account List</h1>
                     <table border="1">
-                        <tr><th>Cpr</th><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr>
-                                <c:forEach var="customer" items="${customers}">
-                            <tr><td><a href="Controller?command=customerDetail&cpr=${customer.cpr}">${customer.cpr}</a></td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.phone}</td><td>${customer.email}</td></tr>
+                        <tr><th>Number</th><th>Type</th><th>Balance</th></tr>
+                        <c:forEach var="account" items="${accounts}">
+                            <td>${account.number}</a></td>
+                            <td>${account.type}</td>
+                            <td>${account.balance}</td></tr> 
                         </c:forEach>                           
                     </table>
                     <form>                        
-                            <input type="submit" name="createCustomer" value="Create customer">
-                            <input type="hidden" name="command" value="showCreateCustomer"> 
+                        <input type="submit" name="createAccount" value="Create account">
+                        <input type="hidden" name="command" value="showCreateAccount"> 
                     </form>
 
-            
+
                     <br/>
                     <a href="Controller?command=back">Back to main page</a>
                 </div>
@@ -67,7 +72,5 @@
                 Copyright © 2014 Group-C
             </div>
         </div>
-
-
     </body>
 </html>
