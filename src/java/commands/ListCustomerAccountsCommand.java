@@ -11,24 +11,21 @@ import security.SecurityRole;
 
 public class ListCustomerAccountsCommand extends TargetCommand {
 
-  public ListCustomerAccountsCommand(String target,List<SecurityRole> roles) {
-    super(target,roles);
-  }
-
-  @Override
-  public String execute(HttpServletRequest request) {
-    BankManager manager = Factory.getInstance().getManager();
-    
-    CustomerIdentifier customer = CustomerIdentifier.fromString((String) request.getSession().getAttribute("cpr"));
-      System.out.println("session obj " + request.getSession().getAttribute("cpr"));
-    Collection<AccountSummary> accounts = manager.listCustomerAccounts(customer);
-    
-      request.getSession().setAttribute("accounts", accounts);
-    
-    
-    return super.execute(request);
+    public ListCustomerAccountsCommand(String target, List<SecurityRole> roles) {
+        super(target, roles);
     }
-  
-  
-  
-  }
+
+    @Override
+    public String execute(HttpServletRequest request) {
+        BankManager manager = Factory.getInstance().getManager();
+        String cpr = (String) request.getParameter("cpr");
+        CustomerIdentifier customer = CustomerIdentifier.fromString((String) cpr);
+        Collection<AccountSummary> accounts = manager.listCustomerAccounts(customer);
+
+        request.getSession().setAttribute("accounts", accounts);
+        request.setAttribute("cpr", cpr);
+
+        return super.execute(request);
+    }
+
+}
