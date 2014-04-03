@@ -14,7 +14,7 @@ import commands.TargetCommand;
 import commands.TransferCommand;
 import commands.CreateCustomerCommand;
 import commands.ListAccountCommand;
-import dk.cphbusiness.dummy.bank.control.DummyBankManager;
+import commands.SayHelloCommand;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -23,15 +23,17 @@ import javax.servlet.http.HttpServletRequest;
 import security.SecurityRole;
 
 public class Factory {
+    //BankManager bankManagerBean = lookupBankManagerBeanRemote();
 
     private static Factory instance = null;
-    private final BankManager manager;
+    private BankManager manager;
     private final Map<String, Command> commands = new HashMap<>();
 
     private Factory() {
-        manager = new DummyBankManager();
+
+        //manager = new DummyBankManager();
         Map<SecurityRole, String> roles = new HashMap();
-        
+
         roles.put(SecurityRole.AccountManager, "/all/main.jsp");
         roles.put(SecurityRole.Customer, "/customer/account-list.jsp");
 
@@ -50,7 +52,9 @@ public class Factory {
         commands.put("showCreateAccount", new TargetCommand("/accountManager/account-edit.jsp", Arrays.asList(SecurityRole.AccountManager)));
         commands.put("createCustomer", new CreateCustomerCommand("/accountManager/customer-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
         commands.put("customerDetail", new CustomerDetailCommand("/accountManager/customer-detail.jsp", Arrays.asList(SecurityRole.AccountManager)));
-        commands.put("createAccount", new CreateAccountCommand("/accountManager/account-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("createAccount", new CreateAccountCommand("/customer/account-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("customerAccounts", new ListCustomersCommand("/accountManager/customer-accounts.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("hello", new SayHelloCommand("/all/hello.jsp", Arrays.asList(SecurityRole.All)));
     }
 
     public static Factory getInstance() {
@@ -79,6 +83,12 @@ public class Factory {
     public BankManager getManager() {
         return manager;
     }
+
+    public void setManager(BankManager manager) {
+        this.manager = manager;
+    }
+    
+    
 
     public Command getCommand(String command, HttpServletRequest request) {
         if (command == null) {

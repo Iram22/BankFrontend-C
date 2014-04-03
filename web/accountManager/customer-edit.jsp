@@ -10,6 +10,34 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer Edit</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+        <script>
+                    $(document).ready(function() {
+            $("#myform").validate({
+            rules:
+            {
+            firstName: {required: true, minlength: 2},
+                    lastName: {required: true, minlength: 2},
+                    email:{required: true, email:true},
+                    password:{required: true, minlength: 5},
+                    repeat:{required: true, equalTo:"#password" }
+
+            },
+
+            message:
+            {
+            firstName:
+            {
+            required: "Please enter you first name",
+                    minlength: jQuery.format("At least {0} characters required!")
+            }
+
+            }
+
+            });
+            });
+        </script>
 
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
     </head>
@@ -47,7 +75,7 @@
                 </div>
                 <div class="right">
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <form action="Controller?command=createCustomer" method="post">
+                    <form id="myform" action="Controller?command=createCustomer" method="post">
                         <h1>Create customer</h1>
                         <label>Cpr: </label><input type="text" name="cpr"><br/>
                         <label>Title: </label><select name="title">
@@ -55,16 +83,19 @@
                             <option>Mrs.</option>
                             <option>Ms.</option>                
                         </select><br/>
-                        <label>First name: </label><input type="text" name="firstName"><br/>
-                        <label>Last name: </label><input type="text" name="lastName"><br/>
+                        <label for="firstName">First name: </label><input type="text" id="firstName" name="firstName"/><br/>
+                        <label>Last name: </label><input type="text" id="lastName" name="lastName"><br/>
+                        <label>Password: </label><input type="password" id="password" name="password"><br/>
+                        <label>Password repeat: </label><input type="password" id="repeat" name="repeat"><br/>
                         <label>Street: </label><input type="text" name="street"><br/>
                         <label>Postal code: </label><input type="text" name="postalCode"><br/>
                         <label>Postal district: </label><input type="text" name="postalDistrict"><br/>
                         <label>Phone: </label><input type="text" name="phone"><br/>
-                        <label>Email: </label><input type="text" name="email"><br/>
+                        <label>Email: </label><input type="text" id="email" name="email"><br/>
                         <input type="submit" name="create" value="Save">
 
                     </form>
+
                     <br/><a href="Controller?command=customerList">Cancel</a>
                     <br/><a href="Controller?command=back">Back to main page</a>
                 </div>

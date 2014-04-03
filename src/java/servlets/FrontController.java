@@ -3,7 +3,10 @@ package servlets;
 import commands.Command;
 import commands.LogoutCommand;
 import commands.ShowLoginCommand;
+import dk.cphbusiness.bank.contract.BankManager;
 import java.io.IOException;
+import javax.ejb.EJB;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,12 +15,23 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "FrontController", urlPatterns = {"/Controller"})
 public class FrontController extends HttpServlet {
+    @EJB
+    private BankManager manager;
+    
   
   private int PORT_NON_SSL;
   private int PORT_SSL;
   
   public FrontController() {
     }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        Factory.getInstance().setManager(manager);
+        super.init(config); //To change body of generated methods, choose Tools | Templates.
+    }
+  
+  
   
   @Override
   protected void service(

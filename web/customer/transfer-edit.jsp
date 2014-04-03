@@ -9,6 +9,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#myform").validate({
+                    rules: {
+                        amount: {required: true, number: true}
+                    }
+
+
+                });
+
+            });
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
@@ -47,8 +61,8 @@
                 <div class="right">
 
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <form action="Controller" method="post">
-                        <label>Amount:</label><input type="text" name="amount"/><br/>
+                    <form action="Controller" method="post" id="myform">
+                        <label>Amount:</label><input type="text" name="amount" id="amount"/><br/>
                         <label>Source:</label><select name="account">
                             <c:forEach var="account" items="${accounts}">
                                 <option value=${account.number}>${account.number}</option>

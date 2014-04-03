@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package commands;
 
 import dk.cphbusiness.bank.contract.BankManager;
@@ -26,20 +25,20 @@ import servlets.Factory;
  *
  * @author Iram
  */
-public class CreateAccountCommand extends TargetCommand{
+public class CreateAccountCommand extends TargetCommand {
 
     public CreateAccountCommand(String target, List<SecurityRole> roles) {
         super(target, roles);
     }
-    
+
     @Override
-    public String execute(HttpServletRequest request)
-    {
+    public String execute(HttpServletRequest request) {
         BankManager manager = Factory.getInstance().getManager();
-        CustomerIdentifier customer = CustomerIdentifier.fromString(request.getParameter("cpr"));
+        String cpr = request.getParameter("cpr");
+        CustomerIdentifier customer = CustomerIdentifier.fromString(cpr);
         BigDecimal interest = new BigDecimal(request.getParameter("interest"));
-        
-       CheckingAccountDetail detail  = new CheckingAccountDetail(interest);
+        String account = request.getParameter("account");
+        CheckingAccountDetail detail = new CheckingAccountDetail(account, interest,null );
         try {
             manager.createAccount(customer, detail);
         } catch (NoSuchCustomerException ex) {
@@ -49,9 +48,9 @@ public class CreateAccountCommand extends TargetCommand{
             request.setAttribute("createAccountError", "Customer is banned");
             Logger.getLogger(CreateAccountCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
-           Collection<AccountSummary> accounts = manager.listAccounts();    
-         request.setAttribute("accounts", accounts);
-       
+        Collection<AccountSummary> accounts = manager.listAccounts();
+        request.setAttribute("accounts", accounts);
+
         return super.execute(request);
     }
 }

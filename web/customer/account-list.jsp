@@ -41,7 +41,7 @@
                 </div>
                 <div class="right">
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <h1>Account list</h1>
+                    <h1>Account list for ${cpr}</h1>
                     <table border="1">
                         <tr><th>Account number</th><th>Account type</th><th>Balance</th></tr>
                                 <c:forEach var="account" items="${accounts}">
@@ -50,7 +50,10 @@
                                 <td>${account.type}</td>
                             <td>${account.balance}</td></tr>
                             </c:forEach>
-                    </table>
+                    </table><br/>
+                     <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
+                            <a href="Controller?command=showCreateAccount&cpr=${cpr}">Create accounts</a>
+                            </c:if >
                     <br/><a href="Controller?command=showTransfer">Transfer amount</a>
                     <br/><a href="Controller?command=back">Back to main page</a>
                 </div>

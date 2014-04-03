@@ -1,11 +1,10 @@
 <%-- 
-    Document   : account-list
-    Created on : Mar 10, 2014, 8:41:35 PM
+    Document   : customer-accounts
+    Created on : Mar 11, 2014, 9:14:47 AM
     Author     : Iram
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +12,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/accountstyle.css">
         <title>JSP Page</title>
     </head>
     <body class="main">
@@ -49,21 +47,15 @@
                 </div>
                 <div class="right">
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <h1>Account List</h1>
+                    <h1>Customer List</h1>
                     <table border="1">
-                        <tr><th>Number</th><th>Type</th><th>Balance</th></tr>
-                        <c:forEach var="account" items="${accounts}">
-                            <td>${account.number}</a></td>
-                            <td>${account.type}</td>
-                            <td>${account.balance}</td></tr> 
+                        <tr><th>Cpr</th><th>Name</th></tr>
+                                <c:forEach var="customer" items="${customers}">
+                            <tr><td><a href="Controller?command=customerAccountList&cpr=${customer.cpr}">${customer.cpr}</a></td><td>${customer.name}</td></tr>
                         </c:forEach>                           
                     </table>
-                    <form>                        
-                        <input type="submit" name="createAccount" value="Create account">
-                        <input type="hidden" name="command" value="showCreateAccount"> 
-                    </form>
 
-
+            
                     <br/>
                     <a href="Controller?command=back">Back to main page</a>
                 </div>

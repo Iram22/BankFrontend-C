@@ -63,7 +63,7 @@
                     </table><br/>
                     <a href="Controller?command=showTransfer">Transfer amount</a><br/>
                     <a href="Controller?command=back">Back to main page</a><br/>
-                    <a href="Controller?command=accountList">Back to account list</a>
+                    <a href="Controller?command=customerAccountList">Back to account list</a>
                 </div>
             </div>
             <div class="footer">
