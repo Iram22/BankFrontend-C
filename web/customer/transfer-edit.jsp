@@ -17,12 +17,16 @@
                     rules: {
                         amount: {required: true, number: true}
                     }
-
-
                 });
 
             });
         </script>
+        <style>
+            label.error{
+                float:right;
+                margin-right:21em;
+            }
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
