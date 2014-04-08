@@ -12,7 +12,8 @@
         <title>Customer Edit</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
-        <script src="javascript/create-customer-script.js"></script>
+        <script src="javascript/customer-validation-script.js"></script>
+        <script src="javascript/autofill-script.js"></script>
         <style>
             label.error{
                 float:right;
@@ -64,18 +65,20 @@
                             <option>Mrs.</option>
                             <option>Ms.</option>                
                         </select><br/>
+
                         <label for="firstName">First name: </label><input type="text" id="firstName" name="firstName"/><br/>
                         <label>Last name: </label><input type="text" id="lastName" name="lastName"><br/>
                         <label>Password: </label><input type="password" id="password" name="password"><br/>
                         <label>Password repeat: </label><input type="password" id="repeat" name="repeat"><br/>
-                        <label>Street: </label><input type="text" name="street"><br/>
-                        <label>Postal code: </label><input type="text" name="postalCode"><br/>
-                        <label>Postal district: </label><input type="text" name="postalDistrict"><br/>
-                        <label>Phone: </label><input type="text" name="phone"><br/>
+                        <label>Phone: </label><input type="text" id="phone" name="phone"><br/>
+                        <label>Street: </label><input type="text" id="street" name="street"><br/>
+                        <label>Postal code: </label><input type="text" id="postalCode" name="postalCode"><br/>
+                        <label>Postal district: </label><input type="text" id="postalDistrict" name="postalDistrict"><br/>
                         <label>Email: </label><input type="text" id="email" name="email"><br/>
                         <input type="submit" name="create" value="Save">
-
                     </form>
+
+                    <button id="btn">Get address from phone number</button>
 
                     <br/><a href="Controller?command=customerList">Cancel</a>
                     <br/><a href="Controller?command=back">Back to main page</a>
