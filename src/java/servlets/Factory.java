@@ -55,6 +55,7 @@ public class Factory {
         commands.put("createAccount", new CreateAccountCommand("/customer/account-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
         commands.put("customerAccounts", new ListCustomersCommand("/accountManager/customer-accounts.jsp", Arrays.asList(SecurityRole.AccountManager)));
         commands.put("hello", new SayHelloCommand("/all/hello.jsp", Arrays.asList(SecurityRole.All)));
+        commands.put("count", new TargetCommand("/accountManager/request-count.jsp", Arrays.asList(SecurityRole.AccountManager)));
     }
 
     public static Factory getInstance() {

@@ -6,40 +6,17 @@
 
 
 $(document).ready(function() {
-//    $("#cpr").focusout(function(){
-//            $.ajax({
-//                    url: "AjaxServlet",
-//                    data: {
-//                        cmd: "cprLookUp",
-//                        cpr: $("#cpr").val()
-//                    },
-//                    cache: false,
-//                    dataType: "json"
-//                }).done(function(data) {
-//                    if(data=== true)
-//                    {
-//                        $("#err").html(data);
-//                    }
-//                    else
-//                    {
-//                        $("#err").html("");
-//                    }
-//                        
-//                    
-//                });
-//    });
+
     $("#myform").validate({
         rules:
                 {
-                    cpr: {required: true,
+                    cpr: {
+                        required: true,
                         remote: {url: "AjaxServlet",
                             type: "get",
                             data: {
                                 cmd: function() {
                                     return "cprLookUp";
-                                },
-                                cpr: function(){
-                                    return $("#cpr").val();
                                 }
                             }}},
                     firstName: {required: true, minlength: 2},
@@ -50,13 +27,12 @@ $(document).ready(function() {
 
 
                 },
-        message:
+        messages:
                 {
                     cpr:
                             {
                                 required: "Please enter a cpr",
-                                remote: jQuery.validator.format("{0} is already taken.")
-                 
+                                remote: "Customer already exists"
                             },
                     firstName:
                             {

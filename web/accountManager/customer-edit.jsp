@@ -17,7 +17,7 @@
         <style>
             label.error{
                 float:right;
-                margin-right:21em;
+                margin-right:20em;
             }
         </style>
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
