@@ -55,7 +55,7 @@ public class AjaxServlet extends HttpServlet {
         }
       
         if ("autofill".equals(AjaxCmd)) {
-            String server = "http://localhost:8080/WannaBeKrak";
+            String server = getServletContext().getInitParameter("server");
             String parameter = request.getParameter("phone");
             String restResource = "/service/person/";
             String mime = "application/json";
@@ -68,7 +68,7 @@ public class AjaxServlet extends HttpServlet {
         
         if("count".equals(AjaxCmd))
         {
-            String server = "http://datdb.cphbusiness.dk:8080/KrakRemote";
+            String server = getServletContext().getInitParameter("server");
             String parameter = "";
             String restResource = "/service/request/thisuser";
             String mime = "text/plain";
@@ -92,7 +92,7 @@ public class AjaxServlet extends HttpServlet {
             Authenticator.setDefault(new Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("group-aaaaaaa", "test".toCharArray());//Add your team password here 
+                    return new PasswordAuthentication("group-c", "test".toCharArray());//Add your team password here 
                 }
             });
             conn.setRequestProperty("Accept", mime);
