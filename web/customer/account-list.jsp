@@ -48,12 +48,12 @@
                             <tr>
                                 <td><a href="Controller?command=accountDetail&account=${account.number}">${account.number}</a></td>
                                 <td>${account.type}</td>
-                            <td>${account.balance}</td></tr>
+                                <td>${account.balance}</td></tr>
                             </c:forEach>
                     </table><br/>
-                     <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
-                            <a href="Controller?command=showCreateAccount&cpr=${cpr}">Create accounts</a>
-                            </c:if >
+                    <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
+                        <a href="Controller?command=showCreateAccount&cpr=${cpr}">Create accounts</a>
+                    </c:if >
                     <br/><a href="Controller?command=showTransfer">Transfer amount</a>
                     <br/><a href="Controller?command=back">Back to main page</a>
                 </div>

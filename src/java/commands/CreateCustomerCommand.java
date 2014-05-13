@@ -8,8 +8,11 @@ package commands;
 import dk.cphbusiness.bank.contract.BankManager;
 import dk.cphbusiness.bank.contract.dto.CustomerDetail;
 import dk.cphbusiness.bank.contract.dto.CustomerSummary;
+import dk.cphbusiness.bank.contract.eto.InvalidPostalCodeException;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import security.SecurityRole;
 import servlets.Factory;
@@ -24,6 +27,7 @@ public class CreateCustomerCommand extends TargetCommand {
         super(target, roles);
     }
 
+    @Override
     public String execute(HttpServletRequest request) {
         BankManager manager = Factory.getInstance().getManager();
         CustomerDetail customer = new CustomerDetail(
@@ -36,7 +40,11 @@ public class CreateCustomerCommand extends TargetCommand {
                 request.getParameter("postalDistrict"),
                 request.getParameter("phone"),
                 request.getParameter("email"));
-        manager.saveCustomer(customer);
+        try {
+            manager.saveCustomer(customer);
+        } catch (InvalidPostalCodeException ex) {
+            request.setAttribute("error", ex);
+        }
         Collection<CustomerSummary> customerList = manager.listCustomers();
         request.setAttribute("customers", customerList);
         return super.execute(request);

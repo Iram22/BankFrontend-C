@@ -82,6 +82,7 @@
 
                     <br/><a href="Controller?command=customerList">Cancel</a>
                     <br/><a href="Controller?command=back">Back to main page</a>
+                    <p>${error}</p>
                 </div>
             </div>
             <div class="footer">

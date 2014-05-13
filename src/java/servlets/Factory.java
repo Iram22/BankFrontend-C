@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.client.Entity;
+import clients.Bank;
+import clients.BankRepositoryClient;
 import security.SecurityRole;
 
 public class Factory {
@@ -30,6 +33,7 @@ public class Factory {
     private final Map<String, Command> commands = new HashMap<>();
 
     private Factory() {
+        registerBank();
 
         //manager = new DummyBankManager();
         Map<SecurityRole, String> roles = new HashMap();
@@ -98,6 +102,12 @@ public class Factory {
         Command cmd = commands.get(command);
         SecurityCheck(cmd, request);
         return cmd;
+    }
+    
+    public void registerBank()
+    {
+        BankRepositoryClient repository = new BankRepositoryClient();
+        repository.save(new Bank("7933", "State Bank",  "http://localhost:8080/Frontend/repository"));
     }
 
 }

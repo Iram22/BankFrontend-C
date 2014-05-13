@@ -30,6 +30,7 @@ public class ListAccountCommand extends TargetCommand{
          Collection<AccountSummary> accounts = manager.listAccounts();
          
          request.setAttribute("accounts", accounts);
+        
         return super.execute(request);
     }
 }

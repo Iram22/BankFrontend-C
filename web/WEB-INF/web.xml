@@ -28,6 +28,10 @@
         <param-name>server</param-name>
         <param-value>http://192.168.0.101:8080/WBKrak</param-value>
     </context-param>
+    <context-param>
+        <param-name>transferUrl</param-name>
+        <param-value>http://localhost:8080/repository/transfer</param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30

@@ -45,11 +45,11 @@
                             <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
                             <li><a href="Controller?command=customerList">Manage customers</a></li>
                             </c:if >
-                        <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
+                            <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
                             <li><a href="Controller?command=customerAccounts">Manage accounts</a></li>
                             </c:if >
-                         <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
-                         <li><a href="Controller?command=count">View counts</a></li>
+                            <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
+                            <li><a href="Controller?command=count">View counts</a></li>
                             </c:if >
 
                         <c:choose >
@@ -61,7 +61,7 @@
                                 <li><a href="Controller?command=logout">Log out</a></li>
                                 </c:otherwise>
                             </c:choose>
-<li><a href="Controller?command=hello">hello</a></li>
+                        <li><a href="Controller?command=hello">hello</a></li>
                     </ul>
                 </div>
             </div>

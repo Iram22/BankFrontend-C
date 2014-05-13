@@ -72,14 +72,17 @@
                                 <option value=${account.number}>${account.number}</option>
                             </c:forEach>
                         </select><br/>
-                        <label>Target:</label><input type="text" name="target"/>
+                        <label>Registration Number:</label> <input type="text" name="reg"/><br/>
+                        <label>Account Number:</label><input type="text" name="target"/><br/>
+                        
                         <input type="submit" value="Transfer">
                         <input type="hidden" name="command" value="transfer">
 
                     </form>
+                    <h3>${response}</h3>
                     <p class="error">${transferError}</p>
                     <a href="Controller?command=back">Back to main page</a><br/>
-                    <a href="Controller?command=accountList">Back to account list</a>
+                    <a href="Controller?command=customerAccountList">Back to account list</a>
                 </div>
             </div>
             <div class="footer">
