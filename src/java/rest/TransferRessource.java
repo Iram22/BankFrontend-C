@@ -39,6 +39,7 @@ public class TransferRessource {
     public TransferResponse create(TransferRequest transfer) {
         BankManager manager = Factory.getInstance().getManager();
         try {
+            System.out.println("amount: " + transfer.getAmount());
             manager.transferAmount(transfer.getAmount(), transfer.getSource(), transfer.getTarget());
             return new TransferResponse(true, "Transfered");
         } catch (NoSuchAccountException | TransferNotAcceptedException | InsufficientFundsException ex) {

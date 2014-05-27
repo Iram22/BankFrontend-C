@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
         <title>JSP Page</title>
     </head>
     <body class="main">
@@ -46,21 +46,27 @@
                 <div class="right">
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
                     <h1>Customer details</h1>
-
+                    <form action="Controller?command=editCustomer">
                     <table border="1">
-                        <tr><th>Cpr: </th><td>${detail.cpr}</td></tr>
-                        <tr><th>Title: </th><td>${detail.title}</td></tr>
-                        <tr><th>First name: </th><td>${detail.firstName}</td></tr>
-                        <tr><th>Last name: </th><td>${detail.lastName}</td></tr>
-                        <tr><th>Street: </th><td>${detail.street}</td></tr>
-                        <tr><th>Postal code: </th><td>${detail.postalCode}</td></tr>
-                        <tr><th>Postal district: </th><td>${detail.postalDistrict}</td></tr>
-                        <tr><th>Phone: </th><td>${detail.phone}</td></tr>
-                        <tr><th>Email: </th><td>${detail.email}</td></tr>
-
+                       
+                            <tr><th>Cpr: </th><td id="cpr">${detail.cpr}</td></tr>
+                            <tr><th>Title: </th><td><input type="text" id="title" name="title" value=${detail.title}></td></tr>
+                            <tr><th>First name: </th><td><input type="text" id="firstName" name="firstName" value=${detail.firstName}></td></tr>
+                            <tr><th>Last name: </th><td><input type="text" id="lastName" name="lastName" value=${detail.lastName}></td></tr>
+                            <tr><th>Street: </th><td><input type="text" id="street" value=${detail.street}></td></tr>
+                            <tr><th>Postal code: </th><td><input type="text" id="postalCode" name="postalCode" value=${detail.postalCode}></td></tr>
+                            <tr><th>Postal district: </th><td><input type="text" id="postalDistrict" name="postalDistrict" value=${detail.postalDistrict}></td></tr>
+                            <tr><th>Phone: </th><td><input type="text" id="phone" name="phone" value=${detail.phone}></td></tr>
+                            <tr><th>Email: </th><td><input type="text" id="email" name="email" value=${detail.email}></td></tr>
                     </table>
+
+                    <input type="submit" name="editCustomer" value="Save changes"/>
+                        </form>
+
                     <br/>
+                    <a href="Controller?command=customerList">Back to customer list</a><br/>
                     <a href="Controller?command=back">Back to main page</a>
+                    
                 </div>
             </div>
             <div class="footer">

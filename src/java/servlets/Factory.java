@@ -20,9 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.client.Entity;
 import clients.Bank;
 import clients.BankRepositoryClient;
+import commands.AboutCommand;
 import security.SecurityRole;
 
 public class Factory {
@@ -60,6 +60,8 @@ public class Factory {
         commands.put("customerAccounts", new ListCustomersCommand("/accountManager/customer-accounts.jsp", Arrays.asList(SecurityRole.AccountManager)));
         commands.put("hello", new SayHelloCommand("/all/hello.jsp", Arrays.asList(SecurityRole.All)));
         commands.put("count", new TargetCommand("/accountManager/request-count.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("editCustomer", new CreateCustomerCommand("/accountManager/customer-list.jsp", Arrays.asList(SecurityRole.AccountManager)));
+        commands.put("about", new AboutCommand("/all/about.jsp", Arrays.asList(SecurityRole.All)));
     }
 
     public static Factory getInstance() {
@@ -69,6 +71,7 @@ public class Factory {
         return instance;
     }
 
+    //If this method is broken, security is broken
     private void SecurityCheck(Command command, HttpServletRequest request) throws SecurityException {
         if (command instanceof TargetCommand) {
             List<SecurityRole> requiredRoles = ((TargetCommand) command).getRoles();
@@ -104,10 +107,10 @@ public class Factory {
         return cmd;
     }
     
-    public void registerBank()
+    public static void registerBank()
     {
         BankRepositoryClient repository = new BankRepositoryClient();
-        repository.save(new Bank("7933", "State Bank",  "http://localhost:8080/Frontend/repository"));
+        repository.save(new Bank("7933", "State Bank",  "http://192.168.0.101:8080/Frontend/repository"));
     }
 
 }

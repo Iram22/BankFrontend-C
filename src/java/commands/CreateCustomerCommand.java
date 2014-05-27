@@ -8,7 +8,6 @@ package commands;
 import dk.cphbusiness.bank.contract.BankManager;
 import dk.cphbusiness.bank.contract.dto.CustomerDetail;
 import dk.cphbusiness.bank.contract.dto.CustomerSummary;
-import dk.cphbusiness.bank.contract.eto.InvalidPostalCodeException;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
@@ -40,11 +39,9 @@ public class CreateCustomerCommand extends TargetCommand {
                 request.getParameter("postalDistrict"),
                 request.getParameter("phone"),
                 request.getParameter("email"));
-        try {
+   
             manager.saveCustomer(customer);
-        } catch (InvalidPostalCodeException ex) {
-            request.setAttribute("error", ex);
-        }
+       
         Collection<CustomerSummary> customerList = manager.listCustomers();
         request.setAttribute("customers", customerList);
         return super.execute(request);

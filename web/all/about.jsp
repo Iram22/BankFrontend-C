@@ -1,6 +1,6 @@
 <%-- 
-    Document   : customer-list
-    Created on : Feb 26, 2014, 11:59:14 AM
+    Document   : about.jsp
+    Created on : May 22, 2014, 8:53:42 AM
     Author     : Iram
 --%>
 
@@ -10,10 +10,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer List</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
+        <title>About Us</title>
     </head>
-     <body class="main">
+    <body class="main">
         <div class="centre">
             <div class="header"> 
                 State Bank
@@ -25,7 +25,6 @@
                     <li class="navList"><a href="#" class="navLinks">News</a></li>
                     <li class="navList"><a href="#" class="navLinks">Contact</a></li>
                     <li class="navList"><a href="#" class="navLinks">About us</a></li>
-
                 </ul>
 
             </div>
@@ -45,30 +44,33 @@
                     </ul>
                 </div>
                 <div class="right">
-                    <div class="logout"><a href="Controller?command=logout">Log out</a></div>
-                    <h1>Customer List</h1>
-                    <table border="1">
-                        <tr><th>Cpr</th><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr>
-                                <c:forEach var="customer" items="${customers}">
-                            <tr><td><a href="Controller?command=customerDetail&cpr=${customer.cpr}">${customer.cpr}</a></td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.phone}</td><td>${customer.email}</td></tr>
-                        </c:forEach>                           
-                    </table>
-                    <form>                        
-                            <input type="submit" name="createCustomer" value="Create customer"/>
-                            
-                            <input type="hidden" name="command" value="showCreateCustomer"/> 
-                    </form>
+                      <div class="logout"><a href="Controller?command=logout">Log out</a></div>
+                    <ul>
+                        <li><h1>Welcome to State Bank</h1></li>
+                        <li>State Bank is located in Copenhagen.</li>
+                        <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}">
+                           <li> Number of Customers: 
+                            <h2>${customer}</h2>
+                            </li>
+                            </c:if >
+                       
 
-            
-                    <br/>
-                    <a href="Controller?command=back">Back to main page</a>
-                    <p>${error}</p>
+                        
+                         <a href="Controller?command=back">Back to main page</a><br/>
+                         <li><a href="Controller?command=hello">hello</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer">
                 Copyright © 2014 Group-C
             </div>
         </div>
+
+
+
+
+
+
 
 
     </body>

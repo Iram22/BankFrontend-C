@@ -41,6 +41,7 @@
                     <ul>
                         <c:if test="${pageContext.request.isUserInRole('Customer')==true}">
                             <li><a href="Controller?command=customerAccountList">View accounts</a></li>
+                            <li><a href="Controller?command=about">About</li>
                             </c:if >
                             <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
                             <li><a href="Controller?command=customerList">Manage customers</a></li>
@@ -51,6 +52,7 @@
                             <c:if test="${pageContext.request.isUserInRole('AccountManager')==true}"> 
                             <li><a href="Controller?command=count">View counts</a></li>
                             </c:if >
+                         
 
                         <c:choose >
                             <c:when test="${pageContext.request.remoteUser== null}">
@@ -62,6 +64,7 @@
                                 </c:otherwise>
                             </c:choose>
                         <li><a href="Controller?command=hello">hello</a></li>
+                       
                     </ul>
                 </div>
             </div>
