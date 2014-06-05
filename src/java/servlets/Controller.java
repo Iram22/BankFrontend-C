@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
         if (detector.detectMobileQuick()) {
             response.sendRedirect("mobile/mobilePage.html");
         } else {
-            response.sendRedirect("all/main.jsp");
+            response.sendRedirect("Controller?command=main");
         }
     }
 
