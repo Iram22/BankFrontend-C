@@ -11,40 +11,44 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 
 public class BankRepositoryClient implements AutoCloseable {
-  private final WebTarget target;
-  private final Client client;
-  private static final String BASE_URI =
-      "http://datdb.cphbusiness.dk:8080/BankRepository/ws/";
-  private static final GenericType<Collection<Bank>> BANKS =
-      new GenericType<Collection<Bank>>() {};
-  
-  public BankRepositoryClient(String uri) {
-    ClientConfig config = new ClientConfig().register(new JacksonFeature());
-    client = ClientBuilder.newClient(config);
-    target = client.target(uri).path("bank");
+
+    private final WebTarget target;
+    private final Client client;
+    private static final String BASE_URI
+            = "http://datdb.cphbusiness.dk:8080/BankRepository/ws/";
+    private static final GenericType<Collection<Bank>> BANKS
+            = new GenericType<Collection<Bank>>() {
+            };
+
+    public BankRepositoryClient(String uri) {
+        ClientConfig config = new ClientConfig().register(new JacksonFeature());
+        client = ClientBuilder.newClient(config);
+        target = client.target(uri).path("bank");
     }
 
-  public BankRepositoryClient() { this(BASE_URI); }
-  
-  public Collection<Bank> list() {
-    return target.request(APPLICATION_JSON_TYPE).get(BANKS);
+    public BankRepositoryClient() {
+        this(BASE_URI);
     }
-  
-  public Bank find(String reg) {
-    return target.path(reg).request(APPLICATION_JSON_TYPE).get(Bank.class);
+
+    public Collection<Bank> list() {
+        return target.request(APPLICATION_JSON_TYPE).get(BANKS);
     }
-  
-  public void save(Bank bank) {
-    target.request().post(Entity.entity(bank, APPLICATION_JSON_TYPE));
+
+    public Bank find(String reg) {
+        return target.path(reg).request(APPLICATION_JSON_TYPE).get(Bank.class);
     }
-  
-  public void drop(String reg) {
-    target.path(reg).request().delete();
+
+    public void save(Bank bank) {
+        target.request().post(Entity.entity(bank, APPLICATION_JSON_TYPE));
     }
-  
-  @Override
-  public void close() {
-    client.close();
+
+    public void drop(String reg) {
+        target.path(reg).request().delete();
     }
-  
-  }
+
+    @Override
+    public void close() {
+        client.close();
+    }
+
+}

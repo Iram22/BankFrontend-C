@@ -43,10 +43,8 @@ public class CreateAccountCommand extends TargetCommand {
             manager.createAccount(customer, detail);
         } catch (NoSuchCustomerException ex) {
             request.setAttribute("createAccountError", "No such customer exists");
-            Logger.getLogger(CreateAccountCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (CustomerBannedException ex) {
             request.setAttribute("createAccountError", "Customer is banned");
-            Logger.getLogger(CreateAccountCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
         Collection<AccountSummary> accounts = manager.listAccounts();
         request.setAttribute("accounts", accounts);

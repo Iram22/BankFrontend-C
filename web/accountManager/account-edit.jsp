@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/accountstyle.css">
         <title>JSP Page</title>
@@ -53,7 +53,7 @@
                     <form action="Controller?command=createAccount">
                         <label>Cpr:</label><input type="text" name="cpr"><br/>
                         <label>Interest:</label><input type="text" name="interest"><br/>
-                        
+
                         <label>Account number:</label><input type="text" name="account"><br/>
                         <input type="submit" name="createAccount" value="Create account">
                         <input type="hidden" name="command" value="createAccount">

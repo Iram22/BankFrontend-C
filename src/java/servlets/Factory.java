@@ -26,7 +26,6 @@ import commands.AboutCommand;
 import security.SecurityRole;
 
 public class Factory {
-    //BankManager bankManagerBean = lookupBankManagerBeanRemote();
 
     private static Factory instance = null;
     private BankManager manager;
@@ -95,8 +94,6 @@ public class Factory {
     public void setManager(BankManager manager) {
         this.manager = manager;
     }
-    
-    
 
     public Command getCommand(String command, HttpServletRequest request) {
         if (command == null) {
@@ -106,11 +103,10 @@ public class Factory {
         SecurityCheck(cmd, request);
         return cmd;
     }
-    
-    public static void registerBank()
-    {
+
+    public static void registerBank() {
         BankRepositoryClient repository = new BankRepositoryClient();
-        repository.save(new Bank("7933", "State Bank",  "http://192.168.0.101:8080/Frontend/repository"));
+        repository.save(new Bank("7933", "State Bank", "http://192.168.0.101:8080/Frontend/repository"));
     }
 
 }

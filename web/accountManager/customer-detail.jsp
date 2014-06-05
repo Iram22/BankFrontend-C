@@ -47,8 +47,8 @@
                     <div class="logout"><a href="Controller?command=logout">Log out</a></div>
                     <h1>Customer details</h1>
                     <form action="Controller?command=editCustomer">
-                    <table border="1">
-                       
+                        <table border="1">
+
                             <tr><th>Cpr: </th><td id="cpr">${detail.cpr}</td></tr>
                             <tr><th>Title: </th><td><input type="text" id="title" name="title" value=${detail.title}></td></tr>
                             <tr><th>First name: </th><td><input type="text" id="firstName" name="firstName" value=${detail.firstName}></td></tr>
@@ -58,15 +58,16 @@
                             <tr><th>Postal district: </th><td><input type="text" id="postalDistrict" name="postalDistrict" value=${detail.postalDistrict}></td></tr>
                             <tr><th>Phone: </th><td><input type="text" id="phone" name="phone" value=${detail.phone}></td></tr>
                             <tr><th>Email: </th><td><input type="text" id="email" name="email" value=${detail.email}></td></tr>
-                    </table>
+                        </table>
 
-                    <input type="submit" name="editCustomer" value="Save changes"/>
-                        </form>
+                        <input type="submit" name="saveCustomer" value="Save changes"/>
+                    </form>
+                    <p class="error">${customerDetailError}</p>
 
                     <br/>
                     <a href="Controller?command=customerList">Back to customer list</a><br/>
                     <a href="Controller?command=back">Back to main page</a>
-                    
+
                 </div>
             </div>
             <div class="footer">

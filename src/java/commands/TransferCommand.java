@@ -22,7 +22,7 @@ import clients.BankRepositoryClient;
 import dk.cphbusiness.bank.contract.dto.TransferResponse;
 import security.SecurityRole;
 import servlets.Factory;
-import transfer.TransferClient;
+import clients.TransferClient;
 
 /**
  *
@@ -42,7 +42,7 @@ public class TransferCommand extends TargetCommand {
         AccountIdentifier target = AccountIdentifier.fromString(request.getParameter("target"));
         String reg = request.getParameter("reg");
         source.setReg(reg);
-        if (reg.equals("") ){
+        if (reg.equals("") || reg.equals("7933")){
             AccountDetail detail;
             try {
                 detail = manager.transferAmount(amount, source, target);
@@ -51,13 +51,10 @@ public class TransferCommand extends TargetCommand {
                 return super.execute(request);
             } catch (NoSuchAccountException ex) {
                 request.setAttribute("transferError", "There is no such account!");
-                Logger.getLogger(TransferCommand.class.getName()).log(Level.SEVERE, null, ex);
             } catch (TransferNotAcceptedException ex) {
                 request.setAttribute("transferError", "Transfer is not accepted!");
-                Logger.getLogger(TransferCommand.class.getName()).log(Level.SEVERE, null, ex);
             } catch (InsufficientFundsException ex) {
                 request.setAttribute("transferError", "You do not have sufficient funds for this transfer!");
-                Logger.getLogger(TransferCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try (BankRepositoryClient bankClient = new BankRepositoryClient()) {
@@ -66,7 +63,6 @@ public class TransferCommand extends TargetCommand {
                     throw new RuntimeException("Bank not found");
                 }
                 String bankUrl = bank.getUrl();
-                System.out.println(bankUrl);
 
                 TransferRequest transferRequest = new TransferRequest(amount, source, target);
                 TransferClient transferClient = new TransferClient(bankUrl);

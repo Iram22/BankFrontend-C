@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rest;
+package transferRest;
 
 import dk.cphbusiness.bank.contract.BankManager;
 import dk.cphbusiness.bank.contract.dto.TransferRequest;
@@ -39,7 +39,6 @@ public class TransferRessource {
     public TransferResponse create(TransferRequest transfer) {
         BankManager manager = Factory.getInstance().getManager();
         try {
-            System.out.println("amount: " + transfer.getAmount());
             manager.transferAmount(transfer.getAmount(), transfer.getSource(), transfer.getTarget());
             return new TransferResponse(true, "Transfered");
         } catch (NoSuchAccountException | TransferNotAcceptedException | InsufficientFundsException ex) {

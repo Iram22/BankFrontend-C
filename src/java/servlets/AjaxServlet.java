@@ -53,7 +53,7 @@ public class AjaxServlet extends HttpServlet {
                 out.println(check);
             }
         }
-      
+
         if ("autofill".equals(AjaxCmd)) {
             String server = getServletContext().getInitParameter("server");
             String parameter = request.getParameter("phone");
@@ -65,9 +65,8 @@ public class AjaxServlet extends HttpServlet {
                 out.println(val);
             }
         }
-        
-        if("count".equals(AjaxCmd))
-        {
+
+        if ("count".equals(AjaxCmd)) {
             String server = getServletContext().getInitParameter("server");
             String parameter = "";
             String restResource = "/service/request/thisuser";
@@ -76,17 +75,16 @@ public class AjaxServlet extends HttpServlet {
             System.out.println(val);
             try (PrintWriter out = response.getWriter()) {
                 out.println(val);
-            } 
+            }
         }
 
     }
 
-    //connect to restful webservice(wannabe krak)
     private static String callRest(String server, String restResource, String parameter, String mime, String method) {
         String data = "";
         try {
             URL url = new URL(server + restResource + parameter);
-            System.out.println("xxxxxx: "+server + restResource + parameter);
+            System.out.println("xxxxxx: " + server + restResource + parameter);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod(method);
             Authenticator.setDefault(new Authenticator() {

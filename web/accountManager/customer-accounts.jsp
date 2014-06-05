@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
         <title>JSP Page</title>
     </head>
@@ -52,10 +52,10 @@
                         <tr><th>Cpr</th><th>Name</th></tr>
                                 <c:forEach var="customer" items="${customers}">
                             <tr><td><a href="Controller?command=customerAccountList&cpr=${customer.cpr}">${customer.cpr}</a></td><td>${customer.name}</td></tr>
-                        </c:forEach>                           
+                                </c:forEach>                           
                     </table>
 
-            
+
                     <br/>
                     <a href="Controller?command=back">Back to main page</a>
                 </div>

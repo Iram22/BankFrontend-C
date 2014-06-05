@@ -13,7 +13,7 @@
         <title>Customer List</title>
         <link rel="stylesheet" type="text/css" href="stylesheets/mystyle.css">
     </head>
-     <body class="main">
+    <body class="main">
         <div class="centre">
             <div class="header"> 
                 State Bank
@@ -51,15 +51,15 @@
                         <tr><th>Cpr</th><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr>
                                 <c:forEach var="customer" items="${customers}">
                             <tr><td><a href="Controller?command=customerDetail&cpr=${customer.cpr}">${customer.cpr}</a></td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.phone}</td><td>${customer.email}</td></tr>
-                        </c:forEach>                           
+                                </c:forEach>                           
                     </table>
                     <form>                        
-                            <input type="submit" name="createCustomer" value="Create customer"/>
-                            
-                            <input type="hidden" name="command" value="showCreateCustomer"/> 
+                        <input type="submit" name="createCustomer" value="Create customer"/>
+
+                        <input type="hidden" name="command" value="showCreateCustomer"/> 
                     </form>
 
-            
+
                     <br/>
                     <a href="Controller?command=back">Back to main page</a>
                     <p>${error}</p>

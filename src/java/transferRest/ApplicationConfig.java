@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package rest;
+package transferRest;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -30,7 +30,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(rest.TransferRessource.class);
+        resources.add(transferRest.TransferRessource.class);
     }
     
 }

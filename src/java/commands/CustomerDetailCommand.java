@@ -38,7 +38,6 @@ public class CustomerDetailCommand extends TargetCommand{
             request.setAttribute("detail", detail);
         } catch (NoSuchCustomerException ex) {
             request.setAttribute("customerDetailError", "No such customer exists");
-            Logger.getLogger(CustomerDetailCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
         return super.execute(request);
     }

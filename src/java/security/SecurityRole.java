@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package security;
 
 /**
@@ -11,5 +10,6 @@ package security;
  * @author Iram
  */
 public enum SecurityRole {
+
     All, Customer, BankTeller, AccountManager, HRManager;
 }
